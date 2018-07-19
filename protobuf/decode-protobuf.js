@@ -23,7 +23,7 @@ module.exports = function(RED) {
     protobuf.load(node.protofile, function(err, root) {
       var msgtype = root.lookupType(node.messagetype);
 
-      this.on('input', function(msg) {
+      node.on('input', function(msg) {
         var message = msgtype.decode(msg.payload);
         msg.payload = message;
 
